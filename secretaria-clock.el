@@ -88,7 +88,7 @@
   (if (not (s-contains? "should be finished by now" notification))
       (alert notification :title "Secretaria: message from org-mode" :mode 'org-mode)
     (alert (format "%s" org-clock-current-task)
-           :title (format "Task's estimate effort has been reach! (%s)" (secretaria-task-clocked-time))
+           :title (format "Task's estimate effort has been reached! (%s)" (secretaria-task-clocked-time))
            :severity 'high
            :mode 'org-mode)))
 
@@ -157,9 +157,11 @@
   "Check if the current clocked task was saved."
   (file-exists-p secretaria-clocked-task-save-file))
 
-(add-hook 'org-clock-in-hook #'secretaria-task-clocked-in t)
-(add-hook 'org-clock-out-hook #'secretaria-task-clocked-out t)
-(add-hook 'org-clock-cancel-hook #'secretaria-task-clocked-canceled t)
+;; These hooks are too noisy, so removing them.
+;; (add-hook 'org-clock-in-hook #'secretaria-task-clocked-in t)
+;; (add-hook 'org-clock-out-hook #'secretaria-task-clocked-out t)
+;; (add-hook 'org-clock-cancel-hook #'secretaria-task-clocked-canceled t)
+
 (add-hook 'after-init-hook #'secretaria-task-load-clocked-task)
 
 (when secretaria-notification-handler-overwrite
