@@ -157,8 +157,8 @@
   "Check if the current clocked task was saved."
   (file-exists-p secretaria-clocked-task-save-file))
 
-(add-hook 'org-clock-in-hook #'secretaria-task-clocked-in t)
-(add-hook 'org-clock-out-hook #'secretaria-task-clocked-out t)
+;; (add-hook 'org-clock-in-hook #'secretaria-task-clocked-in t)
+;; (add-hook 'org-clock-out-hook #'secretaria-task-clocked-out t)
 (add-hook 'org-clock-cancel-hook #'secretaria-task-clocked-canceled t)
 (add-hook 'after-init-hook #'secretaria-task-load-clocked-task)
 
